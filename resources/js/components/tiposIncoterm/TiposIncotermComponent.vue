@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <modal-insert-incoterm-component @insert-incoterm="selectIncoterms"></modal-insert-incoterm-component>
+        <modal-insert-incoterm-component @insert-incoterm="insertIncoterms"></modal-insert-incoterm-component>
     </div>
 </template>
 
