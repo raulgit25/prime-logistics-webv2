@@ -32,7 +32,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
                         <h3 class="text-lg font-medium text-primary">
-                            Afegir cicle
+                            Añadir incoterm
                         </h3>
                         <button type="button"
                             class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
