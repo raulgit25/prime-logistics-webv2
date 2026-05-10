@@ -15,11 +15,14 @@ import { ref, onMounted } from 'vue';
 
 const incoterms = ref();
 
+const emit = defineEmits(['selectIncoterm']);
+
 const selectIncoterms = () => {
     axios.get("tipus_incoterm")
         .then((response) => {
             estaCargando.value = true;
-            incoterms.value = response.data;
+            emit('selectIncoterm');
+            modal.hide();
         })
         .catch((error) => {
             estaCargando.value = false;
