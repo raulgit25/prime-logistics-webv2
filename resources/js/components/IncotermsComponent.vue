@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <tipos-incoterm-component v-if="componenteActivo === 'tipos_incoterm'" @select-incoterm="selectIncoterm" />
+        <tipos-incoterm-component v-if="componenteActivo === 'tipos_incoterm'" />
     </div>
 </template>
 
