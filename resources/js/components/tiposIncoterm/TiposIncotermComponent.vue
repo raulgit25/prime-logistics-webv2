@@ -7,9 +7,6 @@
                     @select-incoterm="selectIncoterms"></tipo-incoterm-component>
             </div>
         </div>
-
-        <modal-insert-incoterm-component :incoterm="incoterms"
-            @insert-incoterm="insertIncoterms"></modal-insert-incoterm-component>
     </div>
 </template>
 
