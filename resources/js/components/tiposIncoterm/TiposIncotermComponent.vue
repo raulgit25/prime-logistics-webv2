@@ -46,7 +46,7 @@
                     origin-left start-2.5 peer-focus:text-primary peer-placeholder-shown:scale-100
                     peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4
                     rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                                Codi
+                                Código
                             </label>
                         </div>
 
@@ -60,7 +60,7 @@
                     origin-left start-2.5 peer-focus:text-primary peer-placeholder-shown:scale-100
                     peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4
                     rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                                Nom
+                                Nombre
                             </label>
                         </div>
                     </form>
@@ -78,7 +78,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5" />
                                 </svg>
-                                Acceptar
+                                Aceptar
                             </button>
                             <button class="text-white bg-secondary hover:bg-secondary-hover
                             hover:text-white focus:ring-3 focus:ring-secondary-focus
@@ -90,7 +90,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                                 </svg>
-                                Cancel·lar
+                                Cancelar
                             </button>
 
                         </div>
@@ -112,8 +112,8 @@ const incoterms = ref();
 const selectIncoterms = () => {
     axios.get("tipus_incoterm")
         .then((response) => {
-            incoterms.value = response.data;
             estaCargando.value = true;
+            incoterms.value = response.data;
         })
         .catch((error) => {
             estaCargando.value = false;
