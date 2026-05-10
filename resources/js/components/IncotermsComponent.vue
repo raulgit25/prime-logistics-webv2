@@ -8,7 +8,7 @@
 
             <div class="flex justify-between items-center mb-4">
                 <!-- Añadir -->
-                <button type="button"
+                <button data-modal-target="insert-modal" data-modal-toggle="insert-modal" type="button"
                     class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
