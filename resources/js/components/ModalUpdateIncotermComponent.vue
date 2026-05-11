@@ -96,7 +96,6 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
-const incoterm = ref({});
 const estaCargando = ref(false);
 const emit = defineEmits(['updateIncoterm']);
 const esError = ref(false);
