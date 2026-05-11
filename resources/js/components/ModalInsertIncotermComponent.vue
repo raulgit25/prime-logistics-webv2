@@ -57,7 +57,8 @@
                     <div class="flex items-start">
                         <div class="inline-flex rounded-lg shadow-sm -space-x-px justify-end mt-4 w-full" role="group">
                             <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-medium leading-5 rounded-s-lg
-                        text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                @click="insertIncoterms()">
                                 <svg class="w-4 h-4 inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
