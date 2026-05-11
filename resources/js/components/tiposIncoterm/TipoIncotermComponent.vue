@@ -14,7 +14,8 @@
                     </svg>
                 </button>
 
-                <modal-update-incoterm-component @update-incoterm="updateIncoterms"></modal-update-incoterm-component>
+                <modal-update-incoterm-component :incoterm="incoterm"
+                    @update-incoterm="updateIncoterms"></modal-update-incoterm-component>
 
                 <!-- Eliminar -->
                 <button data-modal-target="delete-modal" data-modal-toggle="delete-modal" type="button"
