@@ -91,8 +91,6 @@ import axios from 'axios';
 const incoterm = ref({});
 const estaCargando = ref(false);
 const emit = defineEmits(['insertIncoterm']);
-
-//control de errores (en este caso que no super la longitud permitida de los carácteres)
 const esError = ref(false)
 const mensajeError = ref();
 
