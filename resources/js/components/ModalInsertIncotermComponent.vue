@@ -24,8 +24,8 @@
                         </button>
                     </div>
 
-                    <span class="bg-red-100 text-red-800 text-sm font-medium px-2 py-0.5 rounded-full">
-                        Esto es para mostrar los errores
+                    <span v-if="esError" class="bg-red-100 text-red-800 text-sm font-medium px-2 py-0.5 rounded-full">
+                        {{ mensajeError }}
                     </span>
 
                     <form action="#" class="mt-4">
