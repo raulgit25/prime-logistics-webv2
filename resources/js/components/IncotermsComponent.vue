@@ -26,16 +26,16 @@
         <div id="insert-modal" data-modal-backdrop="static" data-modal-placement="top-center" tabindex="-1"
             aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full" :style="{ backgroundColor: white }">
+            <div class="relative p-4 w-full max-w-md max-h-full">
                 <!-- Modal content -->
-                <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
+                <div class="relative bg-white border border-gray-200 rounded-lg shadow-sm p-4 md:p-6">
                     <!-- Modal header -->
-                    <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
-                        <h3 class="text-lg font-medium text-primary">
+                    <div class="flex items-center justify-between border-b border-gray-200 pb-4 md:pb-5">
+                        <h3 class="text-lg font-medium text-gray-900">
                             Añadir incoterm
                         </h3>
                         <button type="button"
-                            class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                            class="text-gray-500 bg-transparent hover:bg-gray-100 hover:text-gray-900 rounded-lg text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
                             data-modal-hide="insert-modal">
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" fill="none" viewBox="0 0 24 24">
@@ -46,60 +46,52 @@
                         </button>
                     </div>
 
-                    <span class="bg-danger-soft text-fg-danger-strong text-sm font-medium px-1.5 py-0.5 rounded-full">
-                        Esto es para mostrar los eerores
+                    <span class="bg-red-100 text-red-800 text-sm font-medium px-2 py-0.5 rounded-full">
+                        Esto es para mostrar los errores
                     </span>
 
                     <form action="#" class="mt-4">
                         <div class="relative">
                             <input type="text" name="codi"
-                                class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium
-                    border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
+                                class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50
+                        border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" " autofocus />
-                            <label for="floating_filled" class="absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10
-                    origin-left start-2.5 peer-focus:text-primary peer-placeholder-shown:scale-100
-                    peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4
-                    rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                            <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10
+                        origin-left start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100
+                        peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                                 Código
                             </label>
                         </div>
 
                         <div class="relative mt-4">
                             <textarea name="nom"
-                                class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium
-                    border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
-                                placeholder=" ">
-                        </textarea>
-                            <label for="floating_filled" class="absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10
-                    origin-left start-2.5 peer-focus:text-primary peer-placeholder-shown:scale-100
-                    peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4
-                    rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                                class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50
+                        border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "></textarea>
+                            <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10
+                        origin-left start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100
+                        peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                                 Nombre
                             </label>
                         </div>
                     </form>
 
                     <div class="flex items-start">
-                        <div class="inline-flex rounded-base shadow-xs -space-x-px justify-end mt-4 w-full"
-                            role="group">
-                            <button type="button" class="text-white bg-primary hover:bg-primary-hover
-                            hover:text-white focus:ring-3 focus:ring-primary-focus font-medium leading-5 rounded-s-base
-                            text-sm px-3 py-2 focus:outline-none">
-                                <svg class="w-4 h-4 text-gray-800 dark:text-white inline" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24">
+                        <div class="inline-flex rounded-lg shadow-sm -space-x-px justify-end mt-4 w-full" role="group">
+                            <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-medium leading-5 rounded-s-lg
+                        text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <svg class="w-4 h-4 inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5" />
                                 </svg>
                                 Aceptar
                             </button>
-                            <button class="text-white bg-secondary hover:bg-secondary-hover
-                            hover:text-white focus:ring-3 focus:ring-secondary-focus
-                            font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none"
+                            <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white font-medium leading-5 rounded-e-lg
+                        text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
                                 data-modal-hide="insert-modal">
-                                <svg class="w-4 h-4 text-gray-800 dark:text-white inline" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                                 </svg>
