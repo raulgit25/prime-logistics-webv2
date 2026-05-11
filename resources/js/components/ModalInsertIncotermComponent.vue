@@ -85,11 +85,33 @@
 
 <script setup>
 import { ref } from 'vue';
+import axios from 'axios';
 
 const incoterm = ref({});
+const estaCargando = ref(false);
+const emit = defineEmits(['insertIncoterm']);
+
+//control de errores (en este caso que no super la longitud permitida de los carácteres)
+const esError = ref(false)
+const mensajeError = ref();
 
 const insertIncoterms = () => {
+    const targetEl = document.getElementById("#insert-modal");
+    const modal = new Modal(targetEl);
 
+    estaCargando.value = true;
+    axios.post('tipus_incoterm', incoterm.value)
+        .then((response) => {
+            estaCargando.value = true;
+            incoterm.value = response.data
+            emit('insertIncoterm');
+            modal.hide();
+        })
+        .catch((error) => {
+            estaCargando.value = false;
+            esError.value = true;
+            mensajeError.value = error.response.data.error;
+        });
 };
 </script>
 
