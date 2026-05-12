@@ -7,9 +7,6 @@
                     @update-incoterm="selectIncoterms" />
             </div>
         </div>
-
-        <modal-update-incoterm-component v-if="showModalUpdate" :incoterm="incoterms" @close="showModalUpdate = false"
-            @update-incoterm="selectIncoterms"></modal-update-incoterm-component>
     </div>
 </template>
 

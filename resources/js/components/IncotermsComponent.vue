@@ -22,6 +22,8 @@
         <tipos-incoterm-component v-if="componenteActivo === 'tipos_incoterm'" />
 
         <modal-insert-incoterm-component @insert-incoterm="selectIncoterms"></modal-insert-incoterm-component>
+        <modal-update-incoterm-component v-if="showModalUpdate" :incoterm="incoterms" @close="showModalUpdate = false"
+            @update-incoterm="selectIncoterms"></modal-update-incoterm-component>
     </div>
 </template>
 
