@@ -5,7 +5,8 @@
             <div class="flex gap-2">
 
                 <!-- Editar -->
-                <button type="button" class="p-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white transition">
+                <button data-modal-target="update-modal" data-modal-toggle="update-modal" type="button"
+                    class="p-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white transition">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" @click="emit('edit', incoterm)">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
