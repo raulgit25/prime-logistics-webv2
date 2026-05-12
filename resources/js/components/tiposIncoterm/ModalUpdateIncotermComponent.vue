@@ -96,6 +96,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { Modal } from 'flowbite';
 
 const incoterm = ref({});
 const estaCargando = ref(false);
