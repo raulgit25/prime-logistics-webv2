@@ -119,6 +119,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import axios from 'axios';
+import { Modal } from 'flowbite';
 
 // Props
 const props = defineProps({
