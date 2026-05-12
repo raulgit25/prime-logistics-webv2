@@ -30,5 +30,6 @@
 <script setup>
 import { ref } from 'vue';
 import TiposIncotermComponent from './tiposIncoterm/TiposIncotermComponent.vue';
+import ModalUpdateIncotermComponent from './tiposIncoterm/ModalUpdateIncotermComponent.vue';
 const componenteActivo = ref('tipos_incoterm');
 </script>
