@@ -21,14 +21,4 @@ class Incoterm extends Model
     {
         return $this->belongsTo(TipuIncoterm::class, 'tipus_incoterm_id', 'id');
     }
-
-    /**
-     * Get the trackingSteps that owns the Incoterm
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function trackingSteps(): BelongsTo
-    {
-        return $this->belongsTo(TrackingStep::class, 'tracking_steps_id', 'id');
-    }
 }
