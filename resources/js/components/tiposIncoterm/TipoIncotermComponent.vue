@@ -37,6 +37,8 @@
             </p>
 
         </div>
+
+        <modal-update-incoterm-component @update-incoterm="selectIncoterms"></modal-update-incoterm-component>
     </div>
 </template>
 
