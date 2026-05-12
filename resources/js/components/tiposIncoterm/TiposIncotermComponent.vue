@@ -4,7 +4,7 @@
             <!-- Mostrar todos los incoterms -->
             <div v-if="componenteActivo === 'tipo_incoterm'" v-for="tipoIncoterm in incoterms" :key="tipoIncoterm.id">
                 <tipo-incoterm-component :incoterm="tipoIncoterm" @select-incoterm="selectIncoterms"
-                    @delete-incoterm="deleteIncoterms" />
+                    @delete-incoterm="selectIncoterms" />
             </div>
         </div>
     </div>
