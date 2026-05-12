@@ -52,10 +52,17 @@ const props = defineProps({
 import { ref } from 'vue';
 import axios from 'axios';
 
+const emit = defineEmits(['deleteIncoterm']);
+
 const deleteIncoterms = async () => {
+    const targetEl = document.getElementById("insert-modal");
+    const modal = new Modal(targetEl);
+
     await axios.delete(`tipus_incoterm/${props.incoterm.id}`)
         .then((response) => {
             alert('Incoterm eliminado');
+            emit('deleteIncoterm');
+            modal.hide();
         })
         .catch((error) => {
             alert('No se ha eliminado el incoterm');

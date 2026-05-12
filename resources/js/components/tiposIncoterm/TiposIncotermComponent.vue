@@ -3,7 +3,8 @@
         <div class="flex flex-wrap gap-2">
             <!-- Mostrar todos los incoterms -->
             <div v-if="componenteActivo === 'tipo_incoterm'" v-for="tipoIncoterm in incoterms" :key="tipoIncoterm.id">
-                <tipo-incoterm-component :incoterm="tipoIncoterm" @select-incoterm="selectIncoterms" />
+                <tipo-incoterm-component :incoterm="tipoIncoterm" @select-incoterm="selectIncoterms"
+                    @delete-incoterm="deleteIncoterms" />
             </div>
         </div>
     </div>
