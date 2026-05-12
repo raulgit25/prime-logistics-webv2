@@ -14,7 +14,6 @@
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
                     </svg>
-
                     Añadir
                 </button>
             </div>
@@ -38,7 +37,7 @@
                         </h3>
                         <button type="button"
                             class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
-                            data-modal-hide="update-modal">
+                            data-modal-hide="update-modal"> <!-- Cambiado: ahora oculta update-modal -->
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -83,7 +82,6 @@
                     </form>
 
                     <div class="flex items-start">
-
                         <div class="inline-flex rounded-base shadow-xs -space-x-px justify-end mt-4 w-full"
                             role="group">
                             <button type="button" class="text-white bg-primary hover:bg-primary-hover
@@ -100,7 +98,7 @@
                             <button class="text-white bg-secondary hover:bg-secondary-hover
                             hover:text-white focus:ring-3 focus:ring-secondary-focus
                             font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none"
-                                data-modal-hide="insert-modal">
+                                data-modal-hide="update-modal"> <!-- Cambiado: ahora oculta update-modal -->
                                 <svg class="w-4 h-4 text-gray-800 dark:text-white inline" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
@@ -109,11 +107,8 @@
                                 </svg>
                                 Cancelar
                             </button>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -124,7 +119,7 @@
 import { ref } from 'vue';
 import TiposIncotermComponent from './tiposIncoterm/TiposIncotermComponent.vue';
 import axios from 'axios';
-
+import { Modal } from 'flowbite';
 
 const componenteActivo = ref('tipos_incoterm');
 const incoterm = ref({});
@@ -133,17 +128,31 @@ const esError = ref(false);
 const mensajeError = ref();
 const emit = defineEmits(['updateIncoterm']);
 
-estaCargando.value = true;
-const updateIncoterms = () => {
-    /*Control de errores (no permitir hacer el cambio si el valor
-    del código es superior a 5 carácteres)*/
+// Función para abrir el modal con los datos del incoterm seleccionado
+const abrirModalEditar = (incotermData) => {
+    incoterm.value = { ...incotermData }; // Copiar los datos
     esError.value = false;
     mensajeError.value = '';
 
-    //Código que realiza dicho control de errores
+    const targetEl = document.getElementById("update-modal");
+    const modal = new Modal(targetEl);
+    modal.show();
+};
+
+// Exportar la función para usarla desde el componente padre
+defineExpose({
+    abrirModalEditar
+});
+
+const updateIncoterms = () => {
+    esError.value = false;
+    mensajeError.value = '';
+
+    // Control de errores
     if (!incoterm.value.codi || incoterm.value.codi.length > 5) {
         esError.value = true;
-        mensajeError.value = 'La longitud de carácteres del código no puede superar más de 5';
+        mensajeError.value = 'La longitud de caracteres del código no puede superar más de 5';
+        return;
     }
 
     const targetEl = document.getElementById("update-modal");
