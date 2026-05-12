@@ -17,6 +17,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import TipoIncotermComponent from './TipoIncotermComponent.vue';
+import ModalUpdateIncotermComponent from './ModalUpdateIncotermComponent.vue';
 
 const incoterms = ref([]);
 const componenteActivo = ref('tipo_incoterm');
