@@ -13,6 +13,8 @@
                     </svg>
                 </button>
 
+                <modal-update-incoterm-component @update-incoterm="selectIncoterms"></modal-update-incoterm-component>
+
                 <!-- Eliminar -->
                 <button type="button" class="p-2 rounded-lg bg-red-500 hover:bg-red-600 text-white transition">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
