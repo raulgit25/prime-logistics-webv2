@@ -56,7 +56,7 @@
                             <input type="text" name="codi"
                                 class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium
                     border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
-                                placeholder=" " autofocus />
+                                placeholder=" " autofocus v-model="form.codi" />
                             <label for="floating_filled" class="absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10
                     origin-left start-2.5 peer-focus:text-primary peer-placeholder-shown:scale-100
                     peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4
@@ -69,7 +69,7 @@
                             <textarea name="nom"
                                 class="block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium
                     border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
-                                placeholder=" ">
+                                placeholder=" " v-model="form.nom">
                         </textarea>
                             <label for="floating_filled" class="absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10
                     origin-left start-2.5 peer-focus:text-primary peer-placeholder-shown:scale-100
@@ -86,7 +86,7 @@
                             role="group">
                             <button type="button" class="text-white bg-primary hover:bg-primary-hover
                             hover:text-white focus:ring-3 focus:ring-primary-focus font-medium leading-5 rounded-s-base
-                            text-sm px-3 py-2 focus:outline-none">
+                            text-sm px-3 py-2 focus:outline-none" @click="updateIncoterms()">
                                 <svg class="w-4 h-4 text-gray-800 dark:text-white inline" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                     viewBox="0 0 24 24">
@@ -119,8 +119,49 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import TiposIncotermComponent from './tiposIncoterm/TiposIncotermComponent.vue';
+import axios from 'axios';
+import { Modal } from 'flowbite';
 
 const componenteActivo = ref('tipos_incoterm');
+
+const estaCargando = ref(false);
+const esError = ref(false);
+const incoterm = ref({});
+const form = ref({
+    codi: '',
+    nom: ''
+});
+const emit = defineEmits(['updateIncoterm']);
+const mensajeError = ref();
+
+/*Coge los datos que hay en la BD y que puede modificar el usuario*/
+const cargarDatosBD = async () => {
+    const respuesta = await fetch('/api/tipus_incoterm');
+    form.value = await respuesta.json();
+};
+
+estaCargando.value = true;
+const updateIncoterms = (incoterm) => {
+    const targetEl = document.getElementById('update-modal');
+    const modal = new Modal(targetEl);
+
+    axios.put('tipus_incoterm', form.value)
+        .then((response) => {
+            estaCargando.value = true;
+            form.value = response.data;
+            emit('updateIncoterm');
+            modal.hide();
+        })
+        .catch((error) => {
+            estaCargando.value = false;
+            mensajeError.value = error.response.data.error;
+        });
+};
+
+onMounted(() => {
+    cargarDatosBD();
+    updateIncoterms();
+});
 </script>
