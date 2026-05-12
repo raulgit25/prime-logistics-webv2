@@ -4,9 +4,12 @@
             <!-- Mostrar todos los incoterms -->
             <div v-if="componenteActivo === 'tipo_incoterm'" v-for="tipoIncoterm in incoterms" :key="tipoIncoterm.id">
                 <tipo-incoterm-component :incoterm="tipoIncoterm" @select-incoterm="selectIncoterms"
-                    @update-incoterm="selectIncoterms" />
+                    @update-incoterm="openModalUpdate" />
             </div>
         </div>
+
+        <modal-update-incoterm-component v-if="showModalUpdate" :incoterm="incotermEdit"
+            @close="showModalUpdate = false" @update-incoterm="selectIncoterms"></modal-update-incoterm-component>
     </div>
 </template>
 
@@ -21,6 +24,7 @@ const componenteActivo = ref('tipo_incoterm');
 
 const emit = defineEmits(['selectIncoterm']);
 const showModalUpdate = ref(false);
+const incotermEdit = ref();
 
 const selectIncoterms = () => {
 
@@ -36,7 +40,7 @@ const selectIncoterms = () => {
 };
 
 const openModalUpdate = (incoterm) => {
-    incoterms.value = { ...incoterm };
+    incotermEdit.value = incoterm;
     showModalUpdate.value = true;
 }
 

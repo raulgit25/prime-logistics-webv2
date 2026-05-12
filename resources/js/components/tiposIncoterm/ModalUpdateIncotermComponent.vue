@@ -88,7 +88,7 @@
 import { ref, watch } from 'vue';
 import axios from 'axios';
 
-defineProps({
+const props = defineProps({
     incoterm: Object,
     required: true
 });
@@ -105,9 +105,9 @@ const form = ref({
 });
 
 //coger datos de la BD al modal, para mostrar los datos a modificar
-watch(() => incoterms.value, (incoterm) => {
-    if (incoterm) {
-        form.value = { ...incoterm }
+watch(() => props.incoterm.value, (val) => {
+    if (val) {
+        form.value = { ...val }
     }
 }, { immediate: true });
 
@@ -116,7 +116,7 @@ const updateIncoterms = async () => {
     const targetEl = document.getElementById("update-modal");
     const modal = new Modal(targetEl);
 
-    await axios.put('tipus_incoterm/${incoterm.id}', form.value)
+    await axios.put(`ipus_incoterm/${props.incoterm.id}`, form.value)
         .then((response) => {
             estaCargando.value = true;
             form.value = response.data;
