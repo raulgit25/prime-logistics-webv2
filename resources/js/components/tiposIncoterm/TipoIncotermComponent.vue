@@ -14,8 +14,7 @@
                 </button>
 
                 <!-- Eliminar -->
-                <button type="button" class="p-2 rounded-lg bg-red-500 hover:bg-red-600 text-white transition"
-                    @click="deleteIncoterms()">
+                <button type="button" class="p-2 rounded-lg bg-red-500 hover:bg-red-600 text-white transition">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -42,30 +41,10 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
     incoterm: {
         type: Object,
         required: true
     }
 });
-
-import { ref } from 'vue';
-import axios from 'axios';
-
-const emit = defineEmits(['deleteIncoterm']);
-
-const deleteIncoterms = async () => {
-    const targetEl = document.getElementById("insert-modal");
-    const modal = new Modal(targetEl);
-
-    await axios.delete(`tipus_incoterm/${props.incoterm.id}`)
-        .then((response) => {
-            alert('Incoterm eliminado');
-            emit('deleteIncoterm');
-            modal.hide();
-        })
-        .catch((error) => {
-            alert('No se ha eliminado el incoterm');
-        });
-};
 </script>
