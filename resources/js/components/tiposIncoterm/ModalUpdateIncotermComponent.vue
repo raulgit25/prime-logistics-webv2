@@ -33,7 +33,7 @@
                             <input type="text" name="codi"
                                 class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50
                         border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " autofocus maxlength="5" v-model="incoterm.codi" />
+                                placeholder=" " autofocus maxlength="5" v-model="form.codi" />
                             <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10
                         origin-left start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100
                         peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -45,7 +45,7 @@
                             <textarea name="nom"
                                 class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50
                         border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " v-model="incoterm.nom"></textarea>
+                                placeholder=" " v-model="form.nom"></textarea>
                             <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10
                         origin-left start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100
                         peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -87,13 +87,13 @@
 <script setup>
 import { ref, watch } from 'vue';
 import axios from 'axios';
+import { Modal } from 'flowbite';
 
 const props = defineProps({
     incoterm: Object,
     required: true
 });
 
-const incoterms = ref({});
 const estaCargando = ref(false);
 const esError = ref(false);
 const mensajeError = ref();
@@ -105,18 +105,18 @@ const form = ref({
 });
 
 //coger datos de la BD al modal, para mostrar los datos a modificar
-watch(() => props.incoterm.value, (val) => {
+watch(() => props.incoterm, (val) => {
     if (val) {
         form.value = { ...val }
     }
 }, { immediate: true });
 
-estaCargando.vaue = true;
+estaCargando.value = true;
 const updateIncoterms = async () => {
     const targetEl = document.getElementById("update-modal");
     const modal = new Modal(targetEl);
 
-    await axios.put(`ipus_incoterm/${props.incoterm.id}`, form.value)
+    await axios.put(`tipus_incoterm/${props.incoterm.id}`, form.value)
         .then((response) => {
             estaCargando.value = true;
             form.value = response.data;
