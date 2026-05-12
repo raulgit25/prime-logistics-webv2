@@ -42,27 +42,23 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     incoterm: {
         type: Object,
         required: true
     }
 });
 
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 
-const deleteIncoterms = () => {
-    axios.delete('tipus_incoterm', incoterm.value)
+const deleteIncoterms = async () => {
+    await axios.delete(`tipus_incoterm/${props.incoterm.id}`)
         .then((response) => {
             alert('Incoterm eliminado');
         })
         .catch((error) => {
-            alert(error + ' No se ha eliminado el incoterm');
+            alert('No se ha eliminado el incoterm');
         });
 };
-
-onMounted(() => {
-    deleteIncoterms();
-});
 </script>
