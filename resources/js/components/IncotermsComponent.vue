@@ -28,4 +28,5 @@
 <script setup>
 import { ref } from 'vue';
 import TiposIncotermComponent from './tiposIncoterm/TiposIncotermComponent.vue';
+const componenteActivo = ref('tipos_incoterm');
 </script>
