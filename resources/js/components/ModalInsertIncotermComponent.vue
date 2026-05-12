@@ -91,7 +91,7 @@ import axios from 'axios';
 const incoterm = ref({});
 const estaCargando = ref(false);
 const emit = defineEmits(['insertIncoterm']);
-const esError = ref(false)
+const esError = ref(false);
 const mensajeError = ref();
 
 const insertIncoterms = () => {
