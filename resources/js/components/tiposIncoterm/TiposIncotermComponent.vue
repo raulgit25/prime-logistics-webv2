@@ -3,9 +3,13 @@
         <div class="flex flex-wrap gap-2">
             <!-- Mostrar todos los incoterms -->
             <div v-if="componenteActivo === 'tipo_incoterm'" v-for="tipoIncoterm in incoterms" :key="tipoIncoterm.id">
-                <tipo-incoterm-component :incoterm="tipoIncoterm" @select-incoterm="selectIncoterms" />
+                <tipo-incoterm-component :incoterm="tipoIncoterm" @select-incoterm="selectIncoterms"
+                    @update-incoterm="selectIncoterms" />
             </div>
         </div>
+
+        <modal-update-incoterm-component v-if="showModalUpdate" :incoterm="incoterms" @close="showModalUpdate = false"
+            @update-incoterm="selectIncoterms"></modal-update-incoterm-component>
     </div>
 </template>
 
@@ -18,6 +22,7 @@ const incoterms = ref([]);
 const componenteActivo = ref('tipo_incoterm');
 
 const emit = defineEmits(['selectIncoterm']);
+const showModalUpdate = ref(false);
 
 const selectIncoterms = () => {
 
@@ -31,6 +36,11 @@ const selectIncoterms = () => {
             alert("Error al cargar los datos de los incoterms");
         });
 };
+
+const openModalUpdate = (incoterm) => {
+    incoterms.value = { ...incoterm };
+    showModalUpdate.value = true;
+}
 
 onMounted(() => {
     selectIncoterms();
