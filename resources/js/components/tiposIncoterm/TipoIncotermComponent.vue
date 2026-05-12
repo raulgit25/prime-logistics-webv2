@@ -135,6 +135,46 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import { Modal } from 'flowbite';
+
+const componenteActivo = ref('tipos_incoterm');
+
+const estaCargando = ref(false);
+const esError = ref(false);
+const incoterm = ref({});
+const form = ref({
+    codi: '',
+    nom: ''
+});
+const mensajeError = ref();
+const emit = defineEmits(['updateIncoterm']);
+
+/*Coge los datos que hay en la BD y que puede modificar el usuario*/
+const cargarDatosBD = async () => {
+    const respuesta = await fetch('/api/tipus_incoterm');
+    form.value = await respuesta.json();
+};
+
+estaCargando.value = true;
+const updateIncoterms = (incoterm) => {
+    const targetEl = document.getElementById('update-modal');
+    const modal = new Modal(targetEl);
+
+    axios.put('tipus_incoterm', form.value)
+        .then((response) => {
+            estaCargando.value = true;
+            form.value = response.data;
+            emit('updateIncoterm');
+            modal.hide();
+        })
+        .catch((error) => {
+            estaCargando.value = false;
+            mensajeError.value = error.response.data.error;
+        });
+};
+
 defineProps({
     incoterm: {
         type: Object,
@@ -142,5 +182,8 @@ defineProps({
     }
 });
 
-const emit = defineEmits(['updateIncoterm']);
+onMounted(() => {
+    cargarDatosBD();
+    updateIncoterms();
+});
 </script>

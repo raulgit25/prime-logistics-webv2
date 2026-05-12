@@ -40,7 +40,6 @@ const form = ref({
     codi: '',
     nom: ''
 });
-const emit = defineEmits(['updateIncoterm']);
 const mensajeError = ref();
 
 /*Coge los datos que hay en la BD y que puede modificar el usuario*/
